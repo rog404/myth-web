@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -16,6 +15,8 @@ export default function Home() {
   const [step, setStep] = useState(0);
   const [isLeft, setIsLeft] = useState(true);
   const [country, setCountry] = useState<"br" | "us">("us");
+
+  const timeOnServer = new Date().toLocaleTimeString("en-US");
 
   function handleChangeLanguage() {
     setCountry((prevCountry) => (prevCountry === "us" ? "br" : "us"));
@@ -49,7 +50,7 @@ export default function Home() {
   const steps = [
     <Step
       country={country}
-      title="Bem vindos ao Myth of Yggdrasil"
+      title={`Bem vindos ao Myth of Yggdrasil ${timeOnServer}`}
       description="O MOY foi pensado por um sonho entre jogadores que gostariam de."
       titleEn="Welcome to Myth of Yggdrasil"
       descriptionEn="MOY was thought by a dream among players who would like to."
