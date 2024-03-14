@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -12,6 +13,8 @@ import LanguageButton from "@/components/LanguageButton";
 type position = "left" | "right";
 
 export default function Home() {
+  noStore();
+
   const [step, setStep] = useState(0);
   const [isLeft, setIsLeft] = useState(true);
   const [country, setCountry] = useState<"br" | "us">("us");
