@@ -58,8 +58,9 @@ export default function Home() {
       titleEn="Welcome to Myth of Yggdrasil"
       descriptionEn="MOY was thought by a dream among players who would like to."
       onChangeButton={handleChange}
+      key="0"
     />,
-    <SignUpForm onChangeButton={handleChange} />,
+    <SignUpForm onChangeButton={handleChange} key="1" />,
   ];
 
   return (
