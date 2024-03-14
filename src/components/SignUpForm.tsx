@@ -3,9 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { NextApiRequest, NextApiResponse } from "next";
-import mariadb from "mariadb";
-
 import { Button } from "./ui/button";
 import {
   Card,
