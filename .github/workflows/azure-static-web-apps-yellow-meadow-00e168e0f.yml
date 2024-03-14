@@ -16,9 +16,11 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
         with:
           submodules: true
           lfs: false
+          node-version: 21
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
