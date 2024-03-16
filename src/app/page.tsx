@@ -79,7 +79,7 @@ export default function Home() {
         </p>
         <p>
           We thank everyone for their participation and collaboration in this
-          important phase of Myth of Yggdrasil's development.
+          important phase of Myth of Yggdrasil&#39;s development.
         </p>
       </div>
       onChangeButton={handleChange}
