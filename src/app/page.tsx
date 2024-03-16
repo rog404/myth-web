@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -58,7 +59,9 @@ export default function Home() {
         <p>
           É com grande entusiasmo que gostaríamos de convidá-lo para participar
           do Alpha Test do Myth of Yggdrasil, programado para iniciar no{" "}
-          <strong className="ml-1">sábado, 16 de março, às 13 horas.</strong>
+          <strong className="ml-1">
+            sábado, 16 de março, às 13 horas (GMT -3).
+          </strong>
         </p>
 
         <p>
@@ -75,7 +78,10 @@ export default function Home() {
         <p>
           It is with great enthusiasm that we would like to invite you to
           participate in the Alpha Test of Myth of Yggdrasil, scheduled to start
-          on <strong className="ml-1">Saturday, March 16th, at 1:00 PM.</strong>
+          on{" "}
+          <strong className="ml-1">
+            Saturday, March 16th, at 1:00 PM (GMT -3).
+          </strong>
         </p>
         <p>
           We thank everyone for their participation and collaboration in this
@@ -194,10 +200,19 @@ export default function Home() {
 
   return (
     <main className="flex flex-col justify-between items-center rounded-xl h-full py-4 overflow-x-hidden gap-2">
-      <img
+      <Image
+        src="/bg.png"
+        alt="Background"
+        layout="fill"
+        priority
+        className="z-[-1]"
+      />
+      <Image
         src="/biglogo.png"
         alt="Myth of Yggdrasil Logo"
-        className="w-[300px] lg:w-[400px]"
+        priority
+        width={300}
+        height={80}
       />
       <div className="flex justify-center items-center flex-grow px-2">
         <AnimatePresence mode="wait">

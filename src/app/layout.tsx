@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
+
 const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,10 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(
-          "bg-gradient-to-r from-blue-400 to-emerald-400 h-screen sm:p-10",
-          lato.className
-        )}
+        className={cn("h-screen sm:p-10 absolute w-screen", lato.className)}
       >
         {children}
       </body>
