@@ -1,20 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { unstable_noStore as noStore } from "next/cache";
 
 import { AnimatePresence, motion } from "framer-motion";
 
 import SignUpForm from "@/components/SignUpForm";
 import Step from "@/components/Step";
-import { Button } from "@/components/ui/button";
 import LanguageButton from "@/components/LanguageButton";
 
 type position = "left" | "right";
 
 export default function Home() {
-  noStore();
-
   const [step, setStep] = useState(0);
   const [isLeft, setIsLeft] = useState(true);
   const [country, setCountry] = useState<"br" | "us">("us");
@@ -50,54 +46,40 @@ export default function Home() {
 
   const steps = [
     <Step
+      first
       country={country}
-      title="Bem vindos ao Myth of Yggdrasil"
+      title="Bem vindo"
       description=<div className="flex flex-col gap-3">
         <p>
-          Gostaríamos de informar sobre o andamento do desenvolvimento do jogo
-          Myth of Yggdrasil. Estamos nos aproximando do lançamento e iniciaremos
-          uma série de testes para garantir a qualidade do produto.
+          Estamos cada vez mais perto do lançamento, em uma fase de extrema
+          importância para o futuro do nosso servidor.
         </p>
 
         <p>
-          É com grande entusiasmo que gostaríamos de convidá-lo especialmente
-          para participar do Alpha Test do Myth of Yggdrasil, programado para
-          iniciar no sábado, 16 de março, às 13 horas.
+          É com grande entusiasmo que gostaríamos de convidá-lo para participar
+          do Alpha Test do Myth of Yggdrasil, programado para iniciar no{" "}
+          <strong className="ml-1">sábado, 16 de março, às 13 horas.</strong>
         </p>
 
         <p>
           Agradecemos a todos pela participação e colaboração nesta fase
           importante do desenvolvimento do Myth of Yggdrasil.
         </p>
-
-        <p>
-          Atenciosamente,
-          <br />A Equipe MOY.
-        </p>
       </div>
-      titleEn="Welcome to Myth of Yggdrasil"
+      titleEn="Welcome"
       descriptionEn=<div className="flex flex-col gap-3">
         <p>
-          We would like to inform you about the progress of the development of
-          the game Myth of Yggdrasil. We are approaching the launch and will
-          begin a series of tests to ensure the quality of the product.
+          We are getting closer to the launch, in an extremely important phase
+          for the future of our server.
         </p>
-
         <p>
-          We are excited to extend a special invitation to you to participate in
-          the Alpha Test of Myth of Yggdrasil, scheduled to begin on March 16th,
-          Saturday, at 1:00 PM.
+          It is with great enthusiasm that we would like to invite you to
+          participate in the Alpha Test of Myth of Yggdrasil, scheduled to start
+          on <strong className="ml-1">Saturday, March 16th, at 1:00 PM.</strong>
         </p>
-
         <p>
-          We appreciate everyone&#34;s participation and collaboration in this
-          important phase of the development of Myth of Yggdrasil.
-        </p>
-
-        <p>
-          Regards,
-          <br />
-          The MOY Team.
+          We thank everyone for their participation and collaboration in this
+          important phase of Myth of Yggdrasil's development.
         </p>
       </div>
       onChangeButton={handleChange}
@@ -108,77 +90,116 @@ export default function Home() {
       title="O que queremos testar?"
       description=<div className="flex flex-col gap-3">
         <p>
-          <strong className="text-xl">Skills:</strong> Explore novas habilidades
-          e mergulhe em uma experiência de jogo aprimorada! Nossa última
-          atualização traz mudanças fundamentais que afetam diretamente a
-          construção das suas Builds, proporcionando uma jornada ainda mais
-          emocionante.
+          Neste teste, nosso foco está no{" "}
+          <strong className="text-xl">Personagem:</strong>
         </p>
 
         <p>
-          <strong className="text-xl">Equipamentos:</strong> Aprecie a vasta
-          variedade de equipamentos disponíveis em nosso mundo. Desde espadas
-          até cartas, cada item foi meticulosamente retrabalhado para garantir
-          sua utilidade. Prepare-se para encontrar verdadeiras joias enquanto
-          busca aprimorar seu arsenal.
+          <strong className="text-xl">Skills:</strong> O Myth introduz novas,
+          retrabalhadas e re-balanceadas habilidades em todas as classes.
         </p>
 
         <p>
-          <strong className="text-xl">Builds:</strong> Desafie-se a criar e
-          testar diferentes combinações de atributos, habilidades e
-          equipamentos. Sua criatividade é o limite neste mundo de
-          possibilidades. Descubra a Build perfeita para se destacar no universo
-          de Myth of Yggdrasil!
+          <strong className="text-xl">Itens e Equipamentos:</strong> Diante da
+          ampla diversidade no jogo, realizamos uma reformulação em centenas de
+          itens, com o objetivo de assegurar a eficácia e utilidade de cada um
+          deles.
         </p>
 
         <p>
-          Além disso, temos uma série de novos sistemas e mudanças importantes
-          para o jogo. Nos aprofundaremos mais em nosso Discord!
+          <strong className="text-xl">Builds:</strong> Explore diferentes
+          combinações de atributos, com as mudanças nas habilidades,
+          equipamentos e sistemas, para encontrar uma construção única.
+        </p>
+
+        <p>
+          <strong className="text-xl">Novos Sistemas:</strong> Além disso,
+          apresentamos uma série de novos sistemas e mudanças significativas
+          para o jogo.
         </p>
       </div>
       titleEn="What do we want to test?"
       descriptionEn=<div className="flex flex-col gap-3">
         <p>
-          <strong className="text-xl">Skills:</strong> Explore new skills and
-          dive into an enhanced gaming experience! Our latest update brings
-          fundamental changes that directly impact the construction of your
-          Builds, providing an even more thrilling journey.
+          In this test, our focus is on the{" "}
+          <strong className="text-xl">Character:</strong>
         </p>
-
         <p>
-          <strong className="text-xl">Equipments:</strong> Enjoy the vast
-          variety of equipment available in our world. From swords to cards,
-          each item has been meticulously reworked to ensure its usefulness. Get
-          ready to find true gems as you seek to enhance your arsenal.
+          <strong className="text-xl">Skills:</strong> Myth introduces new,
+          reworked, and rebalanced skills across all classes.
         </p>
-
         <p>
-          <strong className="text-xl">Builds:</strong> Challenge yourself to
-          create and test different combinations of attributes, skills, and
-          equipment. Your creativity is the limit in this world of
-          possibilities. Discover the perfect Build to stand out in the universe
-          of Myth of Yggdrasil!
+          <strong className="text-xl">Items and Equipment:</strong> Given the
+          wide diversity in the game, we have overhauled hundreds of items to
+          ensure the effectiveness and usefulness of each.
         </p>
-
         <p>
-          In addition, we have a series of new systems and significant changes
-          to the game. We&#34;ll delve deeper into them on our Discord!
+          <strong className="text-xl">Builds:</strong> Explore different
+          combinations of attributes, with changes in skills, equipment, and
+          systems, to find a unique build.
+        </p>
+        <p>
+          <strong className="text-xl">New Systems:</strong> Additionally, we
+          introduce a series of new systems and significant changes to the game.
         </p>
       </div>
       onChangeButton={handleChange}
       key="1"
     />,
-    <SignUpForm onChangeButton={handleChange} key="2" />,
+    <Step
+      country={country}
+      title="A sua opinião importa"
+      description=<div className="flex flex-col gap-3">
+        <p>
+          Nós acreditamos que a comunidade é essencial para o sucesso do
+          projeto, seja jogando, criando conteúdo, participando da economia, e
+          isso inclui durante nosso período de testes.
+        </p>
+
+        <p>
+          Por isso, o seu feedback é fundamental para o sucesso deste projeto,
+          e, como forma de reconhecimento, estamos preparando recompensas
+          exclusivas a todos que participarem.
+        </p>
+
+        <p>
+          Se você já possui uma <strong>Access Key</strong>, cadastre-se na
+          próxima página. Junte-se também a nós em nosso Discord, onde você terá
+          acesso a mais detalhes sobre todo o projeto.
+        </p>
+      </div>
+      titleEn="Your opinion matters"
+      descriptionEn=<div className="flex flex-col gap-3">
+        <p>
+          We believe that the community is essential for the success of the
+          project, whether by playing, creating content, participating in the
+          economy, and this includes during our testing period.
+        </p>
+        <p>
+          Therefore, your feedback is crucial for the success of this project,
+          and, as a form of recognition, we are preparing exclusive rewards for
+          everyone who participates.
+        </p>
+        <p>
+          If you already have an <strong>Access Key</strong>, register on the
+          next page. Also, join us on our Discord, where you will have access to
+          more details about the entire project.
+        </p>
+      </div>
+      onChangeButton={handleChange}
+      key="1"
+    />,
+    <SignUpForm onChangeButton={handleChange} key="2" country={country} />,
   ];
 
   return (
-    <main className="flex flex-col justify-between items-center backdrop-blur-md rounded-xl h-full py-4 overflow-x-hidden gap-2">
+    <main className="flex flex-col justify-between items-center rounded-xl h-full py-4 overflow-x-hidden gap-2">
       <img
         src="/biglogo.png"
         alt="Myth of Yggdrasil Logo"
         className="w-[300px] lg:w-[400px]"
       />
-      <div className="flex justify-center items-center flex-grow">
+      <div className="flex justify-center items-center flex-grow px-2">
         <AnimatePresence mode="wait">
           {steps.map(
             (item, index) =>
@@ -199,7 +220,6 @@ export default function Home() {
           )}
         </AnimatePresence>
       </div>
-      {step < 2 && <Button onClick={() => handleChange("right")}>Next</Button>}
       <LanguageButton
         country={country}
         onChangeLanguage={handleChangeLanguage}

@@ -1,5 +1,11 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+
+import { Vollkorn_SC } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const vollk = Vollkorn_SC({ weight: ["600"], subsets: ["latin"] });
 
 type Props = {
   title?: string;
@@ -8,6 +14,7 @@ type Props = {
   descriptionEn?: ReactNode;
   image?: string;
   country: "br" | "us";
+  first?: boolean;
   onChangeButton: (pos: "right" | "left") => void;
 };
 
@@ -18,21 +25,58 @@ export default function Step({
   descriptionEn = "Description",
   image = "/shared_economy.png",
   country = "us",
+  first = false,
   onChangeButton,
 }: Props) {
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisabled(false);
+    }, 2500);
+  }, []);
+
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:gap-10 items-center">
-      <img
-        src={image}
-        alt="Rogerio"
-        className="w-[300px] lg:w-[550px] flex-[1]"
-      />
-      <div className="flex flex-col flex-[1] gap-4 max-w-[500px] sm:gap-10 px-4 text-stone-800">
-        <div className="text-center text-xl sm:text-3xl">
-          {country == "br" ? title : titleEn}
-        </div>
-        <div className="">{country == "br" ? description : descriptionEn}</div>
-      </div>
+      <Card className="max-w-[1024px]">
+        <CardHeader></CardHeader>
+        <CardContent className="px-4 pt-10 pb-4 flex flex-col gap-2 sm:gap-5">
+          <div
+            className={cn(
+              "text-center font-black text-2xl sm:text-4xl uppercase text-[#5B719F]",
+              vollk.className
+            )}
+          >
+            {country == "br" ? title : titleEn}
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center items-center">
+            <img src={image} alt={`${image} image`} className="w-full px-8" />
+            <div className="w-full px-8">
+              <div className="text-[#5B719F] text-xl text-justify">
+                {country == "br" ? description : descriptionEn}
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-2 justify-end">
+            {!first && (
+              <Button
+                className="w-full sm:w-auto h-8 text-lg"
+                onClick={() => onChangeButton("left")}
+              >
+                {country == "br" ? "Voltar" : "Previous"}
+              </Button>
+            )}
+            <Button
+              className="w-full sm:w-auto h-8 text-lg"
+              onClick={() => onChangeButton("right")}
+              disabled={disabled}
+            >
+              {country == "br" ? "Proximo" : "Next"}
+            </Button>
+          </div>
+        </CardContent>
+        <CardFooter />
+      </Card>
     </div>
   );
 }

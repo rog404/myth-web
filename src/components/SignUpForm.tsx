@@ -32,9 +32,10 @@ import {
 
 type Props = {
   onChangeButton: (pos: "left") => void;
+  country: "br" | "us";
 };
 
-export default function SignUpForm({ onChangeButton }: Props) {
+export default function SignUpForm({ onChangeButton, country }: Props) {
   const form = useForm<SignUp>({
     resolver: zodResolver(SignUpSchema),
     mode: "onBlur",
@@ -47,9 +48,9 @@ export default function SignUpForm({ onChangeButton }: Props) {
   }
 
   return (
-    <Card>
+    <Card className="w-[400px] sm:w-[600px]">
       <CardHeader></CardHeader>
-      <CardContent>
+      <CardContent className="px-6 sm:px-10 py-4">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -170,12 +171,18 @@ export default function SignUpForm({ onChangeButton }: Props) {
                 )}
               />
             </div>
-            <div className="flex justify-center sm:justify-end">
+            <div className="flex justify-center gap-2 sm:justify-end">
+              <Button
+                className="mt-6 sm:mt-8 w-full sm:w-auto h-8 text-lg"
+                onClick={() => onChangeButton("left")}
+              >
+                {country == "br" ? "Voltar" : "Previous"}
+              </Button>
               <Button
                 type="submit"
                 className="mt-6 sm:mt-8 w-full sm:w-auto h-8 text-lg"
               >
-                Sign up
+                {country == "br" ? "Cadastrar" : "Sign Up"}
               </Button>
             </div>
           </form>
