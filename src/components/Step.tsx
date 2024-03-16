@@ -50,7 +50,11 @@ export default function Step({
             {country == "br" ? title : titleEn}
           </div>
           <div className="flex flex-col sm:flex-row justify-center items-center">
-            <img src={image} alt={`${image} image`} className="w-full px-8" />
+            <img
+              src={image}
+              alt={`${image} image`}
+              className="w-[300px] sm:w-[400px] px-8"
+            />
             <div className="w-full px-8">
               <div className="text-[#5B719F] text-xl text-justify">
                 {country == "br" ? description : descriptionEn}
